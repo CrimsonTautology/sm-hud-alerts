@@ -102,7 +102,7 @@ public Action:Event_PlayerDeath(Handle:event, const String:name[], bool:dontBroa
         GetClientName(attacker, attacker_name, sizeof(attacker_name));
         GetClientName(victim, victim_name, sizeof(attacker_name));
 
-        EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX)]);
+        EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
         PrintToHudAll("%s shot %s out of the air!", attacker_name, victim_name);
     }
 
