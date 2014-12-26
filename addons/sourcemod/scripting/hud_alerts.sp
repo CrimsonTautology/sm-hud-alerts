@@ -86,7 +86,7 @@ public OnStompPost(attacker, victim, Float:damageMultiplier, Float:damageBonus, 
     GetClientName(attacker, attacker_name, sizeof(attacker_name));
     GetClientName(victim, victim_name, sizeof(attacker_name));
 
-    EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX)]);
+    EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
     PrintToHudAll("%s goomba stomped %s!", attacker_name, victim_name);
 }
 
