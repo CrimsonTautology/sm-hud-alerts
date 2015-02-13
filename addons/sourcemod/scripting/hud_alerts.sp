@@ -97,6 +97,7 @@ public Action:Event_PlayerDeath(Handle:event, const String:name[], bool:dontBroa
 
     decl String:attacker_name[64], String:victim_name[64];
 
+    /*
     if (IsAirShot(attacker, victim))
     {
         GetClientName(attacker, attacker_name, sizeof(attacker_name));
@@ -105,6 +106,7 @@ public Action:Event_PlayerDeath(Handle:event, const String:name[], bool:dontBroa
         EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
         PrintToHudAll("%s shot %s out of the air!", attacker_name, victim_name);
     }
+    */
 
 
     return Plugin_Continue;
