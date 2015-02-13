@@ -45,6 +45,8 @@ new String:g_KillStreakSounds[][] =
 public OnPluginStart()
 {
     HookEvent("player_death", Event_PlayerDeath);
+    HookEvent("achievement_earned", Event_AchievementEarned);
+    HookEvent("scout_grand_slam", Event_ScoutGrandSlam);
 
     RegAdminCmd("sm_isay", Command_ISay, ADMFLAG_CHAT, "Usage: sm_isay <message> - Prints a message in a special TF2 HUD.");
 }
@@ -107,6 +109,38 @@ public Action:Event_PlayerDeath(Handle:event, const String:name[], bool:dontBroa
         PrintToHudAll("%s shot %s out of the air!", attacker_name, victim_name);
     }
     */
+
+
+    return Plugin_Continue;
+}
+
+public Action:Event_AchievementEarned(Handle:event, const String:name[], bool:dontBroadcast)
+{
+    new client = GetClientOfUserId(GetEventInt(event, "player"));
+
+    decl String:client_name[64];
+
+    GetClientName(client, client_name, sizeof(client_name));
+
+    EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
+    PrintToHudAll("%s earned an achievement! WOO HOO!", client_name);
+
+
+    return Plugin_Continue;
+}
+
+public Action:Event_ScoutGrandSlam(Handle:event, const String:name[], bool:dontBroadcast)
+{
+    new attacker = GetClientOfUserId(GetEventInt(event, "scout_id"));
+    new victim = GetClientOfUserId(GetEventInt(event, "target_id"));
+
+    decl String:attacker_name[64], String:victim_name[64];
+
+    GetClientName(attacker, attacker_name, sizeof(attacker_name));
+    GetClientName(victim, victim_name, sizeof(attacker_name));
+
+    EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
+    PrintToHudAll("%s knocked %s out of the park!", attacker_name, victim_name);
 
 
     return Plugin_Continue;
