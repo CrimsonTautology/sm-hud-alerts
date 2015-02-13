@@ -47,6 +47,7 @@ public OnPluginStart()
     HookEvent("player_death", Event_PlayerDeath);
     HookEvent("achievement_earned", Event_AchievementEarned);
     HookEvent("scout_grand_slam", Event_ScoutGrandSlam);
+    HookEvent("arrow_impact", Event_ArrowImpact);
 
     RegAdminCmd("sm_isay", Command_ISay, ADMFLAG_CHAT, "Usage: sm_isay <message> - Prints a message in a special TF2 HUD.");
 }
@@ -141,6 +142,26 @@ public Action:Event_ScoutGrandSlam(Handle:event, const String:name[], bool:dontB
 
     EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
     PrintToHudAll("%s knocked %s out of the park!", attacker_name, victim_name);
+
+
+    return Plugin_Continue;
+}
+
+public Action:Event_ArrowImpact(Handle:event, const String:name[], bool:dontBroadcast)
+{
+    new attacker = GetClientOfUserId(GetEventInt(event, "shooter"));
+    new victim = GetClientOfUserId(GetEventInt(event, "attachedEntity"));
+
+    if (IsAirShot(attacker, victim))
+    {
+        decl String:attacker_name[64], String:victim_name[64];
+
+        GetClientName(attacker, attacker_name, sizeof(attacker_name));
+        GetClientName(victim, victim_name, sizeof(attacker_name));
+
+        EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
+        PrintToHudAll("%s AIR-rowed %s", attacker_name, victim_name);
+    }
 
 
     return Plugin_Continue;
