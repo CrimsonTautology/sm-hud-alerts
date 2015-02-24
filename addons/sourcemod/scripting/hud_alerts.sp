@@ -44,7 +44,6 @@ new String:g_KillStreakSounds[][] =
 
 public OnPluginStart()
 {
-    HookEvent("player_death", Event_PlayerDeath);
     HookEvent("achievement_earned", Event_AchievementEarned);
     HookEvent("scout_grand_slam", Event_ScoutGrandSlam);
     HookEvent("arrow_impact", Event_ArrowImpact);
@@ -91,28 +90,6 @@ public OnStompPost(attacker, victim, Float:damageMultiplier, Float:damageBonus, 
 
     EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
     PrintToHudAll("%s goomba stomped %s!", attacker_name, victim_name);
-}
-
-public Action:Event_PlayerDeath(Handle:event, const String:name[], bool:dontBroadcast)
-{
-    new attacker = GetClientOfUserId(GetEventInt(event, "attacker"));
-    new victim = GetClientOfUserId(GetEventInt(event, "userid"));
-
-    decl String:attacker_name[64], String:victim_name[64];
-
-    /*
-    if (IsAirShot(attacker, victim))
-    {
-        GetClientName(attacker, attacker_name, sizeof(attacker_name));
-        GetClientName(victim, victim_name, sizeof(attacker_name));
-
-        EmitSoundToAll(g_KillStreakSounds[GetRandomInt(0, KILLSTREAK_SOUNDS_MAX - 1)]);
-        PrintToHudAll("%s shot %s out of the air!", attacker_name, victim_name);
-    }
-    */
-
-
-    return Plugin_Continue;
 }
 
 public Action:Event_AchievementEarned(Handle:event, const String:name[], bool:dontBroadcast)
