@@ -20,26 +20,26 @@ public Plugin:myinfo =
 }
 
 
-#define SOUND_ALERT     "vo/announcer_alert.wav"
-#define SOUND_ATTENTION "vo/announcer_attention.wav"
-#define SOUND_WARNING   "vo/announcer_warning.wav"
+#define SOUND_ALERT     "vo/announcer_alert.mp3"
+#define SOUND_ATTENTION "vo/announcer_attention.mp3"
+#define SOUND_WARNING   "vo/announcer_warning.mp3"
 
 #define KILLSTREAK_SOUNDS_MAX 11
 #define MAX_WEAPON_LENGTH 128
 
 new String:g_KillStreakSounds[][] =
 {
-    "vo/announcer_am_killstreak01.wav",
-    "vo/announcer_am_killstreak02.wav",
-    "vo/announcer_am_killstreak03.wav",
-    "vo/announcer_am_killstreak04.wav",
-    "vo/announcer_am_killstreak05.wav",
-    "vo/announcer_am_killstreak06.wav",
-    "vo/announcer_am_killstreak07.wav",
-    "vo/announcer_am_killstreak08.wav",
-    "vo/announcer_am_killstreak09.wav",
-    "vo/announcer_am_killstreak10.wav",
-    "vo/announcer_am_killstreak11.wav"
+    "vo/announcer_am_killstreak01.mp3",
+    "vo/announcer_am_killstreak02.mp3",
+    "vo/announcer_am_killstreak03.mp3",
+    "vo/announcer_am_killstreak04.mp3",
+    "vo/announcer_am_killstreak05.mp3",
+    "vo/announcer_am_killstreak06.mp3",
+    "vo/announcer_am_killstreak07.mp3",
+    "vo/announcer_am_killstreak08.mp3",
+    "vo/announcer_am_killstreak09.mp3",
+    "vo/announcer_am_killstreak10.mp3",
+    "vo/announcer_am_killstreak11.mp3"
 };
 
 public OnPluginStart()
